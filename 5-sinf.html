@@ -56,20 +56,25 @@
 
   <script>
     let ball = 0;
-    let jami = 0;
+    let javoblar = 0;
+    const jamiSavollar = document.querySelectorAll('.savol').length;
 
     function javob(btn, togri) {
-      jami++;
+      javoblar++;
       if (btn.innerText.startsWith(togri)) {
         ball++;
         btn.style.backgroundColor = "lightgreen";
       } else {
         btn.style.backgroundColor = "salmon";
       }
+      // Tugmani bosgandan keyin boshqa variantlarni o‘chirib qo‘yish
+      const parent = btn.parentElement;
+      Array.from(parent.querySelectorAll("button")).forEach(b => b.disabled = true);
+
       // Agar hamma savol tugasa natija chiqadi
-      if (jami === document.querySelectorAll('.savol').length) {
+      if (javoblar === jamiSavollar) {
         document.getElementById('natija').innerText =
-          "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jami;
+          "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
       }
     }
   </script>
