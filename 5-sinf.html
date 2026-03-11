@@ -41,15 +41,6 @@
       font-size: 18px;
       display: none;
     }
-    .back-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 18px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
     .nav-btn {
       display: block;
       margin: 30px auto;
@@ -64,10 +55,9 @@
   </style>
 </head>
 <body>
-  <button class="back-btn" onclick="window.location.href='index.html'">← Menyuga qaytish</button>
   <h1>5-sinf Matematika Testlari</h1>
 
-  <!-- Blok 1 -->
+  <!-- Blok 1: 1-5 savollar -->
   <div class="blok" id="blok1">
     <div class="savol">
       <p>1-savol: 7 × 8 = ?</p>
@@ -77,16 +67,16 @@
       <button onclick="javob(this,'C')">D) 58</button>
     </div>
     <!-- 2-savol ... 5-savol shu yerda -->
-    <button class="nav-btn" onclick="nextBlok(2)">Keyingi 5 ta savol</button>
+    <button class="nav-btn" onclick="nextBlok(2)">Keyingi</button>
   </div>
 
-  <!-- Blok 2 -->
+  <!-- Blok 2: 6-10 savollar -->
   <div class="blok" id="blok2">
     <!-- 6-savol ... 10-savol shu yerda -->
-    <button class="nav-btn" onclick="nextBlok(3)">Keyingi 5 ta savol</button>
+    <button class="nav-btn" onclick="nextBlok(3)">Keyingi</button>
   </div>
 
-  <!-- Blok 3 -->
+  <!-- Blok 3: 11-15 savollar -->
   <div class="blok" id="blok3">
     <!-- 11-savol ... 15-savol shu yerda -->
     <button class="nav-btn" onclick="tugatish()">Testni tugatish</button>
@@ -116,7 +106,6 @@
       document.getElementById('natija').style.display = "block";
       document.getElementById('natija').innerText =
         "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
-      document.querySelectorAll('.nav-btn').forEach(b => b.style.display = "none");
     }
 
     // Boshlanishida 1-blok ko‘rinadi
