@@ -23,6 +23,7 @@
       border: none;
       cursor: pointer;
     }
+    img { max-width: 300px; display: block; margin: 10px 0; }
   </style>
 </head>
 <body>
@@ -32,17 +33,86 @@
   <h1>5-sinf Matematika Testlari</h1>
 
   <div id="savollar">
-    <!-- Misol savol -->
     <div class="savol">
-      <p>1-savol: Radiusi 8 sm bo‘lgan yarim doira va chorak doiradan tuzilgan shaklning perimetri topilsin.</p>
-      <!-- Agar rasm kerak bo‘lsa <img src="rasm.png"> qo‘yish mumkin -->
+      <p>1-savol: 7 × 8 = ?</p>
+      <button onclick="javob(this,'C')">A) 54</button>
+      <button onclick="javob(this,'C')">B) 64</button>
+      <button onclick="javob(this,'C')">C) 56</button>
+      <button onclick="javob(this,'C')">D) 58</button>
+    </div>
+
+    <div class="savol">
+      <p>2-savol: 144 ning kvadrat ildizi?</p>
+      <button onclick="javob(this,'B')">A) 14</button>
+      <button onclick="javob(this,'B')">B) 12</button>
+      <button onclick="javob(this,'B')">C) 16</button>
+      <button onclick="javob(this,'B')">D) 10</button>
+    </div>
+
+    <div class="savol">
+      <p>3-savol: 25 × 4 = ?</p>
+      <button onclick="javob(this,'A')">A) 100</button>
+      <button onclick="javob(this,'A')">B) 75</button>
+      <button onclick="javob(this,'A')">C) 125</button>
+      <button onclick="javob(this,'A')">D) 150</button>
+    </div>
+
+    <div class="savol">
+      <p>4-savol: Quyidagi shakl perimetrini toping (radius 8 sm).</p>
+      <img src="perimetr.png" alt="Yarim doira va chorak doira shakli">
       <button onclick="javob(this,'B')">A) P = 16 + 8 sm</button>
       <button onclick="javob(this,'B')">B) P = 24 + 8π sm</button>
       <button onclick="javob(this,'B')">C) P = 8 + 16π sm</button>
       <button onclick="javob(this,'B')">D) P = 16 + 12π sm</button>
     </div>
 
-    <!-- Shu tarzda 15 ta savol qo‘shib chiqiladi -->
+    <div class="savol">
+      <p>5-savol: 3² + 4² = ?</p>
+      <button onclick="javob(this,'C')">A) 20</button>
+      <button onclick="javob(this,'C')">B) 24</button>
+      <button onclick="javob(this,'C')">C) 25</button>
+      <button onclick="javob(this,'C')">D) 30</button>
+    </div>
+
+    <div class="savol">
+      <p>6-savol: 200 ÷ 25 = ?</p>
+      <button onclick="javob(this,'B')">A) 6</button>
+      <button onclick="javob(this,'B')">B) 8</button>
+      <button onclick="javob(this,'B')">C) 10</button>
+      <button onclick="javob(this,'B')">D) 12</button>
+    </div>
+
+    <div class="savol">
+      <p>7-savol: 15 × 15 = ?</p>
+      <button onclick="javob(this,'A')">A) 225</button>
+      <button onclick="javob(this,'A')">B) 250</button>
+      <button onclick="javob(this,'A')">C) 200</button>
+      <button onclick="javob(this,'A')">D) 275</button>
+    </div>
+
+    <div class="savol">
+      <p>8-savol: 2³ = ?</p>
+      <button onclick="javob(this,'C')">A) 4</button>
+      <button onclick="javob(this,'C')">B) 6</button>
+      <button onclick="javob(this,'C')">C) 8</button>
+      <button onclick="javob(this,'C')">D) 10</button>
+    </div>
+
+    <div class="savol">
+      <p>9-savol: 1000 ÷ 100 = ?</p>
+      <button onclick="javob(this,'B')">A) 5</button>
+      <button onclick="javob(this,'B')">B) 10</button>
+      <button onclick="javob(this,'B')">C) 20</button>
+      <button onclick="javob(this,'B')">D) 50</button>
+    </div>
+
+    <div class="savol">
+      <p>10-savol: 9 × 9 = ?</p>
+      <button onclick="javob(this,'C')">A) 72</button>
+      <button onclick="javob(this,'C')">B) 99</button>
+      <button onclick="javob(this,'C')">C) 81</button>
+      <button onclick="javob(this,'C')">D) 90</button>
+    </div>
   </div>
 
   <div id="natija"></div>
@@ -54,19 +124,15 @@
 
     function javob(btn, togri) {
       const parent = btn.parentElement;
-      // Agar savolga allaqachon javob berilgan bo‘lsa, boshqa variantni bosish taqiqlanadi
       if (Array.from(parent.querySelectorAll("button")).some(b => b.disabled)) {
         return;
       }
-
       javoblar++;
       if (btn.innerText.trim().startsWith(togri)) {
         ball++;
       }
-      // Variantlarni bloklash
       Array.from(parent.querySelectorAll("button")).forEach(b => b.disabled = true);
 
-      // Oxirida natija chiqarish
       if (javoblar === jamiSavollar) {
         document.getElementById('natija').innerText =
           "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
