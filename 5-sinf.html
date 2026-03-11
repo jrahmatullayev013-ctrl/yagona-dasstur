@@ -16,6 +16,12 @@
     button { margin: 5px; padding: 8px 15px; }
     #natija { font-weight: bold; margin-top: 20px; text-align: center; }
     #controls { margin-top: 20px; text-align: center; }
+    .back-btn {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -28,6 +34,7 @@
       <button onclick="javob(this,'Toshkent')">Samarqand</button>
       <button onclick="javob(this,'Toshkent')">Buxoro</button>
     </div>
+
     <div class="savol">
       <p>2-savol: 5 × 6 = ?</p>
       <button onclick="javob(this,'30')">30</button>
@@ -39,10 +46,9 @@
 
   <div id="natija"></div>
   <div id="controls">
-    <!-- Menyuga qaytish tugmasi -->
-    <button onclick="window.location.href='index.html'">Menyuga qaytish</button>
-    <!-- Savollar ichida oldinga-orqaga yurish -->
-    <button id="prevBtn" onclick="ortgaQaytish()">Oldingi savol</button>
+    <!-- Menyuga qaytish tugmasi strelka ko‘rinishida -->
+    <button class="back-btn" onclick="window.location.href='index.html'">← Menyuga qaytish</button>
+    <!-- Faqat keyingi savol tugmasi -->
     <button id="nextBtn" onclick="keyingiSavol()">Keyingi savol</button>
   </div>
 
@@ -52,11 +58,9 @@
     const savollar = document.querySelectorAll('.savol');
     const natijaDiv = document.getElementById('natija');
     const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
 
     function ko‘rsatSavol(index) {
       savollar.forEach((s, i) => s.style.display = (i === index ? 'block' : 'none'));
-      prevBtn.style.display = (index > 0 ? 'inline-block' : 'none');
       nextBtn.style.display = 'none';
     }
 
@@ -74,15 +78,7 @@
       } else {
         savollar.forEach(s => s.style.display = 'none');
         nextBtn.style.display = 'none';
-        prevBtn.style.display = 'none';
         natijaDiv.innerText = "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + savollar.length;
-      }
-    }
-
-    function ortgaQaytish() {
-      if (joriy > 0) {
-        joriy--;
-        ko‘rsatSavol(joriy);
       }
     }
 
