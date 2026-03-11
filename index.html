@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Sayt</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { text-align: center; }
+    .savol { margin: 20px 0; }
+    button { margin: 5px; padding: 8px 15px; }
+    #natija { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>5-sinf Testlari</h1>
+
+  <div class="savol">
+    <p>1-savol: O‘zbekiston poytaxti qaysi?</p>
+    <button onclick="javob(this,'Toshkent','natija1')">Toshkent</button>
+    <button onclick="javob(this,'Samarqand','natija1')">Samarqand</button>
+    <button onclick="javob(this,'Buxoro','natija1')">Buxoro</button>
+    <p id="natija1"></p>
+  </div>
+
+  <div class="savol">
+    <p>2-savol: 5 × 6 = ?</p>
+    <button onclick="javob(this,'30','natija2')">30</button>
+    <button onclick="javob(this,'25','natija2')">25</button>
+    <button onclick="javob(this,'35','natija2')">35</button>
+    <p id="natija2"></p>
+  </div>
+
+  <div class="savol">
+    <p>3-savol: “Alpomish” dostoni qaysi xalq og‘zaki ijodi namunasi?</p>
+    <button onclick="javob(this,'Epos','natija3')">Epos</button>
+    <button onclick="javob(this,'She’r','natija3')">She’r</button>
+    <button onclick="javob(this,'Roman','natija3')">Roman</button>
+    <p id="natija3"></p>
+  </div>
+
+  <script>
+    function javob(element, togri, natijaId) {
+      let tanlov = element.innerText;
+      if(tanlov === togri) {
+        document.getElementById(natijaId).innerText = "✅ To‘g‘ri!";
+      } else {
+        document.getElementById(natijaId).innerText = "❌ Xato!";
+      }
+    }
+  </script>
+</body>
+</html>
 
