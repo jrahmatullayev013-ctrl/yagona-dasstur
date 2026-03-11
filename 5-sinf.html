@@ -7,50 +7,80 @@
     body {
       font-family: Arial, sans-serif;
       margin: 40px;
-      background: linear-gradient(to right, #ffecd2, #fcb69f); /* fon */
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
       background-size: cover;
       background-attachment: fixed;
     }
-    h1 { text-align: center; color: #333; }
-    .savol { margin: 20px 0; }
+    h1 { text-align: center; }
+    .savol { display: none; margin: 20px 0; }
     button { margin: 5px; padding: 8px 15px; }
     #natija { font-weight: bold; margin-top: 20px; }
   </style>
-  <script>
-    function javob(btn, togri, id){
-      if(btn.innerText === togri){
-        document.getElementById(id).innerText = "✅ To‘g‘ri";
-      } else {
-        document.getElementById(id).innerText = "❌ Noto‘g‘ri";
-      }
-    }
-  </script>
 </head>
 <body>
   <h1>5-sinf Testlari</h1>
 
-  <div class="savol">
-    <p>1-savol: O'zbekiston poytaxti qaysi?</p>
-    <button onclick="javob(this,'Toshkent','natija1')">Toshkent</button>
-    <button onclick="javob(this,'Toshkent','natija1')">Samarqand</button>
-    <button onclick="javob(this,'Toshkent','natija1')">Buxoro</button>
-    <p id="natija1"></p>
+  <div id="savollar">
+    <div class="savol">
+      <p>1-savol: O'zbekiston poytaxti qaysi?</p>
+      <button onclick="javob(this,'Toshkent')">Toshkent</button>
+      <button onclick="javob(this,'Toshkent')">Samarqand</button>
+      <button onclick="javob(this,'Toshkent')">Buxoro</button>
+    </div>
+
+    <div class="savol">
+      <p>2-savol: 5 × 6 = ?</p>
+      <button onclick="javob(this,'30')">30</button>
+      <button onclick="javob(this,'30')">25</button>
+      <button onclick="javob(this,'30')">35</button>
+    </div>
+
+    <div class="savol">
+      <p>3-savol: “Alpomish” dostoni qaysi xalq og'zaki ijodi namunasi?</p>
+      <button onclick="javob(this,'Epos')">Epos</button>
+      <button onclick="javob(this,'Epos')">She’r</button>
+      <button onclick="javob(this,'Epos')">Roman</button>
+    </div>
+
+    <!-- Shu tarzda 15 ta savol qo‘shib ketasan -->
   </div>
 
-  <div class="savol">
-    <p>2-savol: 5 × 6 = ?</p>
-    <button onclick="javob(this,'30','natija2')">30</button>
-    <button onclick="javob(this,'30','natija2')">25</button>
-    <button onclick="javob(this,'30','natija2')">35</button>
-    <p id="natija2"></p>
-  </div>
+  <div id="natija"></div>
+  <button id="nextBtn" onclick="keyingiSavol()">Keyingi savol</button>
 
-  <div class="savol">
-    <p>3-savol: “Alpomish” dostoni qaysi xalq og'zaki ijodi namunasi?</p>
-    <button onclick="javob(this,'Epos','natija3')">Epos</button>
-    <button onclick="javob(this,'Epos','natija3')">She’r</button>
-    <button onclick="javob(this,'Epos','natija3')">Roman</button>
-    <p id="natija3"></p>
-  </div>
+  <script>
+    let joriy = 0;
+    let ball = 0;
+    const savollar = document.querySelectorAll('.savol');
+    const natijaDiv = document.getElementById('natija');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function ko‘rsatSavol(index) {
+      savollar.forEach((s, i) => s.style.display = (i === index ? 'block' : 'none'));
+    }
+
+    function javob(btn, togri) {
+      if (btn.innerText === togri) {
+        ball++;
+      }
+      nextBtn.style.display = 'inline-block';
+    }
+
+    function keyingiSavol() {
+      joriy++;
+      if (joriy < savollar.length) {
+        ko‘rsatSavol(joriy);
+        nextBtn.style.display = 'none';
+      } else {
+        savollar.forEach(s => s.style.display = 'none');
+        nextBtn.style.display = 'none';
+        natijaDiv.innerText = "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + savollar.length;
+      }
+    }
+
+    // Boshlanishida faqat 1-savol ko‘rinadi
+    ko‘rsatSavol(joriy);
+    nextBtn.style.display = 'none';
+  </script>
 </body>
 </html>
