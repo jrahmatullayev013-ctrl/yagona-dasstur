@@ -10,10 +10,8 @@
       padding: 40px;
       background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    h1 { text-align: center; margin-bottom: 30px; }
+    .blok { display: none; }
     .savol {
       max-width: 600px;
       margin: 20px auto;
@@ -23,15 +21,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       text-align: center;
     }
-    .savol p {
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    .savol img {
-      max-width: 250px;
-      margin: 10px auto;
-      display: block;
-    }
+    .savol p { font-weight: bold; margin-bottom: 15px; }
     .savol button {
       display: block;
       width: 80%;
@@ -43,10 +33,7 @@
       cursor: pointer;
       font-size: 16px;
     }
-    .savol button:disabled {
-      background: #ddd;
-      cursor: not-allowed;
-    }
+    .savol button:disabled { background: #ddd; cursor: not-allowed; }
     #natija {
       font-weight: bold;
       margin-top: 30px;
@@ -63,7 +50,7 @@
       border: none;
       cursor: pointer;
     }
-    #finishBtn {
+    .nav-btn {
       display: block;
       margin: 30px auto;
       padding: 12px 25px;
@@ -80,7 +67,8 @@
   <button class="back-btn" onclick="window.location.href='index.html'">← Menyuga qaytish</button>
   <h1>5-sinf Matematika Testlari</h1>
 
-  <div id="savollar">
+  <!-- Blok 1 -->
+  <div class="blok" id="blok1">
     <div class="savol">
       <p>1-savol: 7 × 8 = ?</p>
       <button onclick="javob(this,'C')">A) 54</button>
@@ -88,45 +76,51 @@
       <button onclick="javob(this,'C')">C) 56</button>
       <button onclick="javob(this,'C')">D) 58</button>
     </div>
-
-    <div class="savol">
-      <p>2-savol: Radiusi 8 sm bo‘lgan yarim doira va chorak doiradan tuzilgan shaklning perimetri topilsin.</p>
-      <img src="perimetr.png" alt="Geometrik shakl">
-      <button onclick="javob(this,'B')">A) P = 16 + 8 sm</button>
-      <button onclick="javob(this,'B')">B) P = 24 + 8π sm</button>
-      <button onclick="javob(this,'B')">C) P = 8 + 16π sm</button>
-      <button onclick="javob(this,'B')">D) P = 16 + 12π sm</button>
-    </div>
-
-    <!-- Shu tarzda 10 ta savol qo‘shib chiqiladi -->
+    <!-- 2-savol ... 5-savol shu yerda -->
+    <button class="nav-btn" onclick="nextBlok(2)">Keyingi 5 ta savol</button>
   </div>
 
-  <button id="finishBtn" onclick="tugatish()">Testni tugatish</button>
+  <!-- Blok 2 -->
+  <div class="blok" id="blok2">
+    <!-- 6-savol ... 10-savol shu yerda -->
+    <button class="nav-btn" onclick="nextBlok(3)">Keyingi 5 ta savol</button>
+  </div>
+
+  <!-- Blok 3 -->
+  <div class="blok" id="blok3">
+    <!-- 11-savol ... 15-savol shu yerda -->
+    <button class="nav-btn" onclick="tugatish()">Testni tugatish</button>
+  </div>
+
   <div id="natija"></div>
 
   <script>
     let ball = 0;
     let javoblar = 0;
-    const jamiSavollar = document.querySelectorAll('.savol').length;
+    const jamiSavollar = 15;
 
     function javob(btn, togri) {
       const parent = btn.parentElement;
-      if (Array.from(parent.querySelectorAll("button")).some(b => b.disabled)) {
-        return;
-      }
+      if (Array.from(parent.querySelectorAll("button")).some(b => b.disabled)) return;
       javoblar++;
-      if (btn.innerText.trim().startsWith(togri)) {
-        ball++;
-      }
+      if (btn.innerText.trim().startsWith(togri)) ball++;
       Array.from(parent.querySelectorAll("button")).forEach(b => b.disabled = true);
+    }
+
+    function nextBlok(n) {
+      document.querySelectorAll('.blok').forEach(b => b.style.display = "none");
+      document.getElementById('blok'+n).style.display = "block";
     }
 
     function tugatish() {
       document.getElementById('natija').style.display = "block";
       document.getElementById('natija').innerText =
         "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
-      document.getElementById('finishBtn').style.display = "none";
+      document.querySelectorAll('.nav-btn').forEach(b => b.style.display = "none");
     }
+
+    // Boshlanishida 1-blok ko‘rinadi
+    nextBlok(1);
   </script>
 </body>
 </html>
