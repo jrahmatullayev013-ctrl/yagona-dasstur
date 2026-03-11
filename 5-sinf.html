@@ -52,6 +52,7 @@
       margin-top: 30px;
       text-align: center;
       font-size: 18px;
+      display: none;
     }
     .back-btn {
       position: absolute;
@@ -60,6 +61,17 @@
       font-size: 18px;
       background: none;
       border: none;
+      cursor: pointer;
+    }
+    #finishBtn {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 25px;
+      font-size: 18px;
+      background: #ff7f50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
     }
   </style>
@@ -89,6 +101,7 @@
     <!-- Shu tarzda 10 ta savol qo‘shib chiqiladi -->
   </div>
 
+  <button id="finishBtn" onclick="tugatish()">Testni tugatish</button>
   <div id="natija"></div>
 
   <script>
@@ -106,11 +119,13 @@
         ball++;
       }
       Array.from(parent.querySelectorAll("button")).forEach(b => b.disabled = true);
+    }
 
-      if (javoblar === jamiSavollar) {
-        document.getElementById('natija').innerText =
-          "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
-      }
+    function tugatish() {
+      document.getElementById('natija').style.display = "block";
+      document.getElementById('natija').innerText =
+        "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
+      document.getElementById('finishBtn').style.display = "none";
     }
   </script>
 </body>
