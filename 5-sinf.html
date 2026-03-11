@@ -17,7 +17,10 @@
     #natija { font-weight: bold; margin-top: 20px; text-align: center; }
     #controls { margin-top: 20px; text-align: center; }
     .back-btn {
-      font-size: 20px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 18px;
       background: none;
       border: none;
       cursor: pointer;
@@ -25,6 +28,9 @@
   </style>
 </head>
 <body>
+  <!-- Menyuga qaytish tugmasi chap tepa burchakda -->
+  <button class="back-btn" onclick="window.location.href='index.html'">← Menyuga qaytish</button>
+
   <h1>5-sinf Testlari</h1>
 
   <div id="savollar">
@@ -41,13 +47,12 @@
       <button onclick="javob(this,'30')">25</button>
       <button onclick="javob(this,'30')">35</button>
     </div>
+
     <!-- Shu tarzda 15 ta savol qo‘shib chiqiladi -->
   </div>
 
   <div id="natija"></div>
   <div id="controls">
-    <!-- Menyuga qaytish tugmasi strelka ko‘rinishida -->
-    <button class="back-btn" onclick="window.location.href='index.html'">← Menyuga qaytish</button>
     <!-- Faqat keyingi savol tugmasi -->
     <button id="nextBtn" onclick="keyingiSavol()">Keyingi savol</button>
   </div>
