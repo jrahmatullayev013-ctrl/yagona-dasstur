@@ -1,34 +1,76 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-  <meta charset="UTF-8">
-  <title>Bosh menyu — Yagona Dastur</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Bosh menyu -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">🏠 Bosh sahifa</a></li>
-      <li><a href="faxrlarimiz.html">🌟 Faxrlarimiz</a></li>
-      <li><a href="mocktest.html">📝 Mock Test</a></li>
-      <li><a href="olimpiada.html">🏆 Online Olimpiada</a></li>
-      <li>
-        <form class="login-form">
-          <input type="email" placeholder="Email kiriting" required>
-          <button type="submit">Kirish</button>
-        </form>
-      </li>
-    </ul>
-  </nav>
+/* Navbar */
+.navbar {
+  background: linear-gradient(to right, #0066cc, #3399ff);
+  padding: 12px;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar li {
+  margin: 0 15px;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.navbar a:hover {
+  color: #ffd700;
+}
 
-  <!-- Hero banner -->
-  <header class="hero">
-    <div class="overlay">
-      <h1>Yagona Dastur</h1>
-      <p>Kelajak avlodini tarbiyalash — bizning vazifamiz</p>
-      <p class="idea">📖 “Bilim — eng katta kuch”</p>
-    </div>
-  </header>
-</body>
-</html>
+/* Login form */
+.login-form {
+  display: flex;
+}
+.login-form input {
+  padding: 5px;
+  border-radius: 4px;
+  border: none;
+  margin-right: 5px;
+}
+.login-form button {
+  background: #ffd700;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.login-form button:hover {
+  background: #ffcc00;
+}
+
+/* Hero banner */
+.hero {
+  position: relative;
+  background: url("fon.jpg") no-repeat center center/cover; /* fon rasmi */
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero .overlay {
+  background: rgba(0,0,0,0.5);
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+}
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 22px;
+}
+.hero .idea {
+  margin-top: 15px;
+  font-style: italic;
+  font-size: 18px;
+  color: #ffd700;
+}
