@@ -60,18 +60,20 @@
     const jamiSavollar = document.querySelectorAll('.savol').length;
 
     function javob(btn, togri) {
+      const parent = btn.parentElement;
+      // Agar savolga allaqachon javob berilgan bo‘lsa, boshqa variantni bosish taqiqlanadi
+      if (Array.from(parent.querySelectorAll("button")).some(b => b.disabled)) {
+        return;
+      }
+
       javoblar++;
       if (btn.innerText.startsWith(togri)) {
         ball++;
-        btn.style.backgroundColor = "lightgreen";
-      } else {
-        btn.style.backgroundColor = "salmon";
       }
-      // Tugmani bosgandan keyin boshqa variantlarni o‘chirib qo‘yish
-      const parent = btn.parentElement;
+      // Variantlarni bloklash
       Array.from(parent.querySelectorAll("button")).forEach(b => b.disabled = true);
 
-      // Agar hamma savol tugasa natija chiqadi
+      // Oxirida natija chiqarish
       if (javoblar === jamiSavollar) {
         document.getElementById('natija').innerText =
           "Test tugadi! To‘g‘ri javoblar: " + ball + " / " + jamiSavollar;
