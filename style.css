@@ -1,7 +1,7 @@
 /* Navbar */
 .navbar {
-  background: #333;
-  padding: 10px;
+  background: linear-gradient(to right, #0066cc, #3399ff);
+  padding: 12px;
 }
 .navbar ul {
   list-style: none;
@@ -17,7 +17,28 @@
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s;
 }
 .navbar a:hover {
   color: #ffd700;
+}
+.telegram-btn {
+  background: #0088cc;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 20px;
 }
