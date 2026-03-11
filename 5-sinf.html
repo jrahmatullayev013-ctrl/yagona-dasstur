@@ -6,14 +6,53 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
+      margin: 0;
+      padding: 40px;
       background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    h1 { text-align: center; }
-    .savol { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
-    .savol p { font-weight: bold; }
-    button { margin: 5px; padding: 8px 15px; }
-    #natija { font-weight: bold; margin-top: 30px; text-align: center; }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .savol {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    .savol p {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .savol img {
+      max-width: 250px;
+      margin: 10px auto;
+      display: block;
+    }
+    .savol button {
+      display: block;
+      width: 80%;
+      margin: 8px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #fcb69f;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .savol button:disabled {
+      background: #ddd;
+      cursor: not-allowed;
+    }
+    #natija {
+      font-weight: bold;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px;
+    }
     .back-btn {
       position: absolute;
       top: 20px;
@@ -23,13 +62,10 @@
       border: none;
       cursor: pointer;
     }
-    img { max-width: 300px; display: block; margin: 10px 0; }
   </style>
 </head>
 <body>
-  <!-- Menyuga qaytish tugmasi -->
   <button class="back-btn" onclick="window.location.href='index.html'">← Menyuga qaytish</button>
-
   <h1>5-sinf Matematika Testlari</h1>
 
   <div id="savollar">
@@ -42,77 +78,15 @@
     </div>
 
     <div class="savol">
-      <p>2-savol: 144 ning kvadrat ildizi?</p>
-      <button onclick="javob(this,'B')">A) 14</button>
-      <button onclick="javob(this,'B')">B) 12</button>
-      <button onclick="javob(this,'B')">C) 16</button>
-      <button onclick="javob(this,'B')">D) 10</button>
-    </div>
-
-    <div class="savol">
-      <p>3-savol: 25 × 4 = ?</p>
-      <button onclick="javob(this,'A')">A) 100</button>
-      <button onclick="javob(this,'A')">B) 75</button>
-      <button onclick="javob(this,'A')">C) 125</button>
-      <button onclick="javob(this,'A')">D) 150</button>
-    </div>
-
-    <div class="savol">
-      <p>4-savol: Quyidagi shakl perimetrini toping (radius 8 sm).</p>
-      <img src="perimetr.png" alt="Yarim doira va chorak doira shakli">
+      <p>2-savol: Radiusi 8 sm bo‘lgan yarim doira va chorak doiradan tuzilgan shaklning perimetri topilsin.</p>
+      <img src="perimetr.png" alt="Geometrik shakl">
       <button onclick="javob(this,'B')">A) P = 16 + 8 sm</button>
       <button onclick="javob(this,'B')">B) P = 24 + 8π sm</button>
       <button onclick="javob(this,'B')">C) P = 8 + 16π sm</button>
       <button onclick="javob(this,'B')">D) P = 16 + 12π sm</button>
     </div>
 
-    <div class="savol">
-      <p>5-savol: 3² + 4² = ?</p>
-      <button onclick="javob(this,'C')">A) 20</button>
-      <button onclick="javob(this,'C')">B) 24</button>
-      <button onclick="javob(this,'C')">C) 25</button>
-      <button onclick="javob(this,'C')">D) 30</button>
-    </div>
-
-    <div class="savol">
-      <p>6-savol: 200 ÷ 25 = ?</p>
-      <button onclick="javob(this,'B')">A) 6</button>
-      <button onclick="javob(this,'B')">B) 8</button>
-      <button onclick="javob(this,'B')">C) 10</button>
-      <button onclick="javob(this,'B')">D) 12</button>
-    </div>
-
-    <div class="savol">
-      <p>7-savol: 15 × 15 = ?</p>
-      <button onclick="javob(this,'A')">A) 225</button>
-      <button onclick="javob(this,'A')">B) 250</button>
-      <button onclick="javob(this,'A')">C) 200</button>
-      <button onclick="javob(this,'A')">D) 275</button>
-    </div>
-
-    <div class="savol">
-      <p>8-savol: 2³ = ?</p>
-      <button onclick="javob(this,'C')">A) 4</button>
-      <button onclick="javob(this,'C')">B) 6</button>
-      <button onclick="javob(this,'C')">C) 8</button>
-      <button onclick="javob(this,'C')">D) 10</button>
-    </div>
-
-    <div class="savol">
-      <p>9-savol: 1000 ÷ 100 = ?</p>
-      <button onclick="javob(this,'B')">A) 5</button>
-      <button onclick="javob(this,'B')">B) 10</button>
-      <button onclick="javob(this,'B')">C) 20</button>
-      <button onclick="javob(this,'B')">D) 50</button>
-    </div>
-
-    <div class="savol">
-      <p>10-savol: 9 × 9 = ?</p>
-      <button onclick="javob(this,'C')">A) 72</button>
-      <button onclick="javob(this,'C')">B) 99</button>
-      <button onclick="javob(this,'C')">C) 81</button>
-      <button onclick="javob(this,'C')">D) 90</button>
-    </div>
+    <!-- Shu tarzda 10 ta savol qo‘shib chiqiladi -->
   </div>
 
   <div id="natija"></div>
