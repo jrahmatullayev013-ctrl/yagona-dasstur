@@ -5,11 +5,8 @@
   <title>Yagona Dastur — Bosh menyu</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-      min-height: 100vh;
+      font-family: Arial, sans-serif;
     }
     /* Tepada navigatsiya paneli */
     .navbar {
@@ -38,14 +35,24 @@
     .nav-links a:hover {
       color: #f1c40f;
     }
-    /* Asosiy blok */
-    .container {
-      max-width: 700px;
-      margin: 60px auto;
-      text-align: center;
+    /* Hero banner */
+    .hero {
+      background: url('education-bg.jpg') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
-    h2 {
-      color: #333;
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
     }
   </style>
 </head>
@@ -60,8 +67,8 @@
     </div>
   </div>
 
-  <!-- Asosiy qism -->
-  <div class="container">
+  <!-- Pastda hero banner -->
+  <div class="hero">
     <h2>Bosh menyuga xush kelibsiz!</h2>
     <p>Bu yerda siz testlarni ishlashingiz, dastur haqida ma’lumot olishingiz va ro‘yxatdan o‘tishingiz mumkin.</p>
   </div>
