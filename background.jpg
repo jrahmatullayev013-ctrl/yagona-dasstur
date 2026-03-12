@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+h1 {
+  text-align: center;
+  color: #fff; /* fon ustida oq rang yaxshi ko‘rinadi */
+}
+.question {
+  background: rgba(255,255,255,0.9); /* savollar bloklari yarim shaffof oq */
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
