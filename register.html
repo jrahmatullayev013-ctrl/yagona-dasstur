@@ -2,28 +2,27 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <title>Ro‘yxatdan o‘tish — Yagona Dastur</title>
+  <title>Ro‘yxatdan o‘tish</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">🏠 Bosh sahifa</a></li>
-      <li><a href="login.html">🔑 Kirish</a></li>
-    </ul>
-  </nav>
+  <h1>Ro‘yxatdan o‘tish</h1>
 
-  <!-- Ro‘yxatdan o‘tish formasi -->
-  <div class="login-box">
-    <h2>Ro‘yxatdan o‘tish</h2>
-    <form>
-      <input type="text" placeholder="Ismingizni kiriting" required>
-      <input type="email" placeholder="Email kiriting" required>
-      <input type="password" placeholder="Parol yarating" required>
-      <button type="submit">Ro‘yxatdan o‘tish</button>
+  <div class="question">
+    <form action="#" method="post">
+      <label for="fullname">👤 To‘liq ism:</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">📧 Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">🔑 Parol:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" id="submitBtn">Ro‘yxatdan o‘tish</button>
     </form>
-    <p>Hisobingiz bormi? <a href="login.html">Kirish</a></p>
   </div>
+
+  <a href="index.html" id="submitBtn">Orqaga qaytish</a>
 </body>
 </html>
