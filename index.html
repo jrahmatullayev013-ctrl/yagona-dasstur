@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<title>Yagona Dastur</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f2f2f2;
-}
-
-/* NAVBAR */
-.navbar{
-display:flex;
-justify-content:center;
-gap:40px;
-background:#222;
-padding:18px;
-box-shadow:0 2px 8px rgba(0,0,0,0.3);
-}
-
-.navbar a{
-color:white;
-text-decoration:none;
-font-size:18px;
-padding:8px 16px;
-border-radius:6px;
-transition:0.3s;
-}
-
-.navbar a:hover{
-background:#4CAF50;
-}
-
-.container{
-text-align:center;
-margin-top:120px;
-}
-
-h1{
-font-size:40px;
-color:#333;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <title>Yagona Dastur — Bosh menyu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px;
+      padding: 20px;
+      background: #555;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 22px;
+      font-weight: bold;
+      width: 250px;
+      transition: 0.3s;
+    }
+    .menu-btn:hover {
+      background: #333;
+    }
+    .menu-btn span {
+      margin-left: 10px;
+    }
+    .top-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .bottom-buttons {
+      margin-top: 20px;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <h1>Yagona Dastur — Bosh menyu</h1>
 
-<div class="navbar">
-<a href="mocktest.html">📱 Mock Test</a>
-<a href="register.html">📝 Registratsiya</a>
-<a href="about.html">ℹ️ Dastur haqida</a>
-</div>
+    <!-- Tepada Mock Test va Dastur haqida -->
+    <div class="top-buttons">
+      <a href="mocktest.html" class="menu-btn">
+        📘 <span>Mock Test</span>
+      </a>
+      <a href="haqida.html" class="menu-btn">
+        ℹ️ <span>Dastur haqida</span>
+      </a>
+    </div>
 
-<div class="container">
-<h1>Yagona Test Dasturi</h1>
-<p>Mock test ishlash uchun yuqoridagi menyudan foydalaning</p>
-</div>
-
+    <!-- Pastda Registratsiya -->
+    <div class="bottom-buttons">
+      <a href="registratsiya.html" class="menu-btn">
+        📝 <span>Registratsiya</span>
+      </a>
+    </div>
+  </div>
 </body>
 </html>
