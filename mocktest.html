@@ -1,50 +1,84 @@
-<h2>Mock test</h2>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Yagona Dastur — Mock Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    select, button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      font-size: 16px;
+    }
+    .question {
+      margin: 15px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sarlavha o‘rnida sinf tanlash -->
+    <label for="classSelect">Sinfni tanlang:</label>
+    <select id="classSelect">
+      <option value="5">5-sinf</option>
+      <option value="6">6-sinf</option>
+      <option value="7">7-sinf</option>
+      <option value="8">8-sinf</option>
+      <option value="9">9-sinf</option>
+      <option value="10">10-sinf</option>
+      <option value="11">11-sinf</option>
+    </select>
+    <button onclick="startTest()">Boshlash</button>
 
-<div class="question">
-  <p>5-savol: Agar 2x + 3 = 15 bo‘lsa, x ning qiymati nechaga teng?</p>
-  <label><input type="radio" name="q5"> 5</label>
-  <label><input type="radio" name="q5"> 6</label>
-  <label><input type="radio" name="q5"> 7</label>
-</div>
+    <!-- Savollar bloki -->
+    <div id="questions"></div>
+  </div>
 
-<div class="question">
-  <p>6-savol: (3² + 4²) ning kvadrat ildizi nechaga teng?</p>
-  <label><input type="radio" name="q6"> 5</label>
-  <label><input type="radio" name="q6"> 7</label>
-  <label><input type="radio" name="q6"> 25</label>
-</div>
-
-<div class="question">
-  <p>7-savol: 2x – y = 10 va x = 8 bo‘lsa, y ning qiymati nechaga teng?</p>
-  <label><input type="radio" name="q7"> 6</label>
-  <label><input type="radio" name="q7"> 8</label>
-  <label><input type="radio" name="q7"> 10</label>
-</div>
-
-<div class="question">
-  <p>8-savol: 1/2 + 2/3 = ?</p>
-  <label><input type="radio" name="q8"> 7/6</label>
-  <label><input type="radio" name="q8"> 5/6</label>
-  <label><input type="radio" name="q8"> 1</label>
-</div>
-
-<div class="question">
-  <p>9-savol: Agar a = 3 va b = 4 bo‘lsa, a² + b² ning qiymati nechaga teng?</p>
-  <label><input type="radio" name="q9"> 12</label>
-  <label><input type="radio" name="q9"> 25</label>
-  <label><input type="radio" name="q9"> 49</label>
-</div>
-
-<div class="question">
-  <p>10-savol: 2x² – 8 = 0 tenglamaning ildizlari qanday?</p>
-  <label><input type="radio" name="q10"> x = ±2</label>
-  <label><input type="radio" name="q10"> x = ±4</label>
-  <label><input type="radio" name="q10"> x = ±√2</label>
-</div>
-
-<div class="question">
-  <p>11-savol: 5! (5 faktorial) ning qiymati nechaga teng?</p>
-  <label><input type="radio" name="q11"> 60</label>
-  <label><input type="radio" name="q11"> 120</label>
-  <label><input type="radio" name="q11"> 720</label>
-</div>
+  <script>
+    // Savollarni sinflar bo‘yicha saqlaymiz
+    const testQuestions = {
+      "5": [
+        {q:"25 × 4 = ?", opts:["50","75","100"], ans:2},
+        {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0}
+      ],
+      "6": [
+        {q:"2x + 3 = 15 bo‘lsa, x = ?", opts:["5","6","7"], ans:1},
+        {q:"(3² + 4²) ning kvadrat ildizi?", opts:["5","7","25"], ans:0}
+      ],
+      "7": [
+        {q:"2x – y = 10, x=8 bo‘lsa, y = ?", opts:["6","8","10"], ans:0},
+        {q:"1/2 + 2/3 = ?", opts:["7/6","5/6","1"], ans:0}
+      ],
+      "8": [
+        {q:"a=3, b=4 bo‘lsa, a²+b² = ?", opts:["12","25","49"], ans:1},
+        {q:"2x² – 8 = 0 ildizlari?", opts:["±2","±4","±√2"], ans:0}
+      ],
+      "9": [
+        {q:"5! (faktorial) = ?", opts:["60","120","720"], ans:1},
+        {q:"√(16) + √(9) = ?", opts:["7","8","9"], ans:0}
+      ],
+      "10": [
+        {q:"x² – 5x + 6 = 0 ildizlari?", opts:["x=2 va x=3","x=1 va x=6","
