@@ -69,6 +69,14 @@
       <option value="11">11-sinf</option>
     </select>
 
+    <!-- Fan tanlash -->
+    <label for="subjectSelect">Fan tanlang:</label>
+    <select id="subjectSelect">
+      <option value="matematika">Matematika</option>
+      <option value="fizika">Fizika</option>
+      <option value="informatika">Informatika</option>
+    </select>
+
     <button onclick="startTest()">Boshlash</button>
 
     <!-- Savollar bloki -->
@@ -77,38 +85,45 @@
   </div>
 
   <script>
-    // Har bir savolga ball qo‘yamiz: oson=1, o‘rtacha=2, qiyin=3
+    // Savollarni sinf va fan bo‘yicha saqlaymiz
     const testQuestions = {
-      "5": [
-        {q:"25 × 4 = ?", opts:["50","75","100"], ans:2, score:1},
-        {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0, score:1},
-        {q:"12 ÷ 3 = ?", opts:["2","3","4"], ans:2, score:1},
-        {q:"7 × 6 = ?", opts:["36","42","48"], ans:1, score:1},
-        {q:"100 – 45 = ?", opts:["45","55","65"], ans:1, score:1},
-        {q:"5³ = ?", opts:["25","125","225"], ans:1, score:2},
-        {q:"2x = 10 bo‘lsa, x = ?", opts:["2","5","10"], ans:1, score:1},
-        {q:"√(49) = ?", opts:["6","7","8"], ans:1, score:1},
-        {q:"15 + 28 = ?", opts:["43","42","44"], ans:0, score:1},
-        {q:"9 × 9 = ?", opts:["81","72","99"], ans:0, score:1},
-        {q:"50 ÷ 5 = ?", opts:["5","10","15"], ans:1, score:1},
-        {q:"3² + 4² = ?", opts:["25","12","7"], ans:0, score:2},
-        {q:"2 × (6+4) = ?", opts:["20","24","18"], ans:1, score:1},
-        {q:"45 – 19 = ?", opts:["26","25","27"], ans:0, score:1},
-        {q:"8 × 7 = ?", opts:["54","56","64"], ans:1, score:1}
-      ]
-      // boshqa sinflar uchun ham 15 ta savol shu tarzda qo‘shiladi
+      "5": {
+        "matematika": [
+          {q:"25 × 4 = ?", opts:["50","75","100"], ans:2},
+          {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0}
+        ],
+        "fizika": [
+          {q:"Tezlik formulasi qaysi?", opts:["v=s/t","F=m·a","E=m·c²"], ans:0}
+        ],
+        "informatika": [
+          {q:"HTMLda sarlavha uchun teg?", opts:["<p>","<h1>","<div>"], ans:1}
+        ]
+      },
+      "6": {
+        "matematika": [
+          {q:"2x + 3 = 15 bo‘lsa, x = ?", opts:["5","6","7"], ans:1}
+        ],
+        "fizika": [
+          {q:"Nyutonning 2-qonuni?", opts:["F=m·a","E=m·c²","p=m·v"], ans:0}
+        ],
+        "informatika": [
+          {q:"CSSda rang berish uchun?", opts:["color","font-size","margin"], ans:0}
+        ]
+      }
+      // boshqa sinflar uchun ham shu tarzda qo‘shiladi
     };
 
     function startTest() {
       const selectedClass = document.getElementById("classSelect").value;
+      const selectedSubject = document.getElementById("subjectSelect").value;
       const questionsDiv = document.getElementById("questions");
       const resultDiv = document.getElementById("result");
       questionsDiv.innerHTML = ""; 
       resultDiv.innerHTML = "";
 
-      const questions = testQuestions[selectedClass];
+      const questions = testQuestions[selectedClass][selectedSubject];
       if (!questions) {
-        questionsDiv.innerHTML = "<p>Bu sinf uchun savollar hali qo‘shilmagan.</p>";
+        questionsDiv.innerHTML = "<p>Bu sinf va fan uchun savollar hali qo‘shilmagan.</p>";
         return;
       }
 
@@ -132,11 +147,11 @@
       questions.forEach((item, index) => {
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
         if (selected && parseInt(selected.value) === item.ans) {
-          score += item.score; // ball qo‘shiladi
+          score++;
         }
       });
       document.getElementById("result").innerHTML = 
-        `Sizning umumiy balingiz: ${score} / ${questions.reduce((sum,q)=>sum+q.score,0)}`;
+        `Sizning balingiz: ${score} / ${questions.length}`;
     }
   </script>
 </body>
