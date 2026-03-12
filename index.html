@@ -8,17 +8,25 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      /* Gradient fon */
       background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
       min-height: 100vh;
+    }
+    .topbar {
+      background: #333;
+      color: white;
+      padding: 10px 20px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      align-items: center;
+    }
+    .topbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: auto;
     }
     .container {
-      width: 90%;
       max-width: 900px;
-      margin-top: 40px;
+      margin: 40px auto;
       background: #fff;
       padding: 25px;
       border-radius: 12px;
@@ -67,8 +75,13 @@
   </style>
 </head>
 <body>
+  <!-- Tepada menyuga qaytish -->
+  <div class="topbar">
+    <a href="index.html">← Menyuga qaytish</a>
+  </div>
+
   <div class="container">
-    <!-- Sinf tanlash va Boshlash tugmasi bir qatorda -->
+    <!-- Sinf tanlash va Boshlash tugmasi -->
     <div class="controls">
       <div>
         <label for="classSelect">Sinfni tanlang:</label>
@@ -94,7 +107,7 @@
     const testQuestions = {
       "5": [
         {q:"25 × 4 = ?", opts:["50","75","100"], ans:2, score:1},
-        {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0, score:1},
+        {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0, score:1}
         // ... yana 13 ta savol qo‘shiladi
       ]
       // boshqa sinflar uchun ham 15 ta savol qo‘shiladi
