@@ -2,27 +2,142 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <title>Bosh menyu — Yagona Dastur</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Yagona Dastur — Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      /* Gradient fon */
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    select, button {
+      margin-top: 10px;
+      padding: 10px 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .question {
+      margin: 15px 0;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+    }
+    #result {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">🏠 Bosh sahifa</a></li>
-      <li><a href="mocktest.html">📘 Mock Test</a></li>
-      <li><a href="olimpiada.html">🏆 Online Olimpiada</a></li>
-      <li><a href="register.html">📝 Ro‘yxatdan o‘tish</a></li>
-    </ul>
-  </nav>
+  <div class="container">
+    <!-- Sinf tanlash -->
+    <label for="classSelect">Sinfni tanlang:</label>
+    <select id="classSelect">
+      <option value="5">5-sinf</option>
+      <option value="6">6-sinf</option>
+      <option value="7">7-sinf</option>
+      <option value="8">8-sinf</option>
+      <option value="9">9-sinf</option>
+      <option value="10">10-sinf</option>
+      <option value="11">11-sinf</option>
+    </select>
 
-  <!-- Hero banner -->
-  <section class="hero">
-    <div class="overlay">
-      <h1>Yagona Dastur</h1>
-      <p>O‘quvchilar uchun interaktiv testlar</p>
-      <p class="idea">Bilim — kelajak kaliti!</p>
-    </div>
-  </section>
+    <button onclick="startTest()">Boshlash</button>
+
+    <!-- Savollar bloki -->
+    <div id="questions"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Har bir savolga ball qo‘yamiz: oson=1, o‘rtacha=2, qiyin=3
+    const testQuestions = {
+      "5": [
+        {q:"25 × 4 = ?", opts:["50","75","100"], ans:2, score:1},
+        {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0, score:1},
+        {q:"12 ÷ 3 = ?", opts:["2","3","4"], ans:2, score:1},
+        {q:"7 × 6 = ?", opts:["36","42","48"], ans:1, score:1},
+        {q:"100 – 45 = ?", opts:["45","55","65"], ans:1, score:1},
+        {q:"5³ = ?", opts:["25","125","225"], ans:1, score:2},
+        {q:"2x = 10 bo‘lsa, x = ?", opts:["2","5","10"], ans:1, score:1},
+        {q:"√(49) = ?", opts:["6","7","8"], ans:1, score:1},
+        {q:"15 + 28 = ?", opts:["43","42","44"], ans:0, score:1},
+        {q:"9 × 9 = ?", opts:["81","72","99"], ans:0, score:1},
+        {q:"50 ÷ 5 = ?", opts:["5","10","15"], ans:1, score:1},
+        {q:"3² + 4² = ?", opts:["25","12","7"], ans:0, score:2},
+        {q:"2 × (6+4) = ?", opts:["20","24","18"], ans:1, score:1},
+        {q:"45 – 19 = ?", opts:["26","25","27"], ans:0, score:1},
+        {q:"8 × 7 = ?", opts:["54","56","64"], ans:1, score:1}
+      ]
+      // boshqa sinflar uchun ham 15 ta savol shu tarzda qo‘shiladi
+    };
+
+    function startTest() {
+      const selectedClass = document.getElementById("classSelect").value;
+      const questionsDiv = document.getElementById("questions");
+      const resultDiv = document.getElementById("result");
+      questionsDiv.innerHTML = ""; 
+      resultDiv.innerHTML = "";
+
+      const questions = testQuestions[selectedClass];
+      if (!questions) {
+        questionsDiv.innerHTML = "<p>Bu sinf uchun savollar hali qo‘shilmagan.</p>";
+        return;
+      }
+
+      questions.forEach((item, index) => {
+        const qDiv = document.createElement("div");
+        qDiv.className = "question";
+        qDiv.innerHTML = `<p>${index+1}-savol: ${item.q}</p>` +
+          item.opts.map((opt,i)=>`<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`).join("");
+        questionsDiv.appendChild(qDiv);
+      });
+
+      // Tugatish tugmasi
+      const finishBtn = document.createElement("button");
+      finishBtn.textContent = "Tugatish";
+      finishBtn.onclick = () => calculateScore(questions);
+      questionsDiv.appendChild(finishBtn);
+    }
+
+    function calculateScore(questions) {
+      let score = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && parseInt(selected.value) === item.ans) {
+          score += item.score; // ball qo‘shiladi
+        }
+      });
+      document.getElementById("result").innerHTML = 
+        `Sizning umumiy balingiz: ${score} / ${questions.reduce((sum,q)=>sum+q.score,0)}`;
+    }
+  </script>
 </body>
 </html>
