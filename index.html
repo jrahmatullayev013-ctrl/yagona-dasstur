@@ -15,31 +15,41 @@
       margin: 50px auto;
       text-align: center;
     }
-    h1 {
-      margin-bottom: 30px;
-    }
     .menu-btn {
-      display: block;
-      margin: 15px 0;
-      padding: 12px;
-      background: #4CAF50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      padding: 20px;
+      background: #555;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 18px;
+      border-radius: 8px;
+      font-size: 22px;
+      font-weight: bold;
+      width: 250px;
       transition: 0.3s;
     }
     .menu-btn:hover {
-      background: #45a049;
+      background: #333;
+    }
+    .menu-btn span {
+      margin-left: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Yagona Dastur — Menyu</h1>
-    <a href="mocktest.html" class="menu-btn">📘 Mock Test</a>
-    <a href="fanlar.html" class="menu-btn">📚 Fanlar</a>
-    <a href="haqida.html" class="menu-btn">ℹ️ Dastur haqida</a>
+    <!-- Katta tugma ko‘rinishida menyu -->
+    <a href="mocktest.html" class="menu-btn">
+      📘 <span>Mock Test</span>
+    </a>
+    <a href="fanlar.html" class="menu-btn">
+      📚 <span>Fanlar</span>
+    </a>
+    <a href="haqida.html" class="menu-btn">
+      ℹ️ <span>Dastur haqida</span>
+    </a>
   </div>
 </body>
 </html>
