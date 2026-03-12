@@ -2,16 +2,26 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <title>Test + O‘yin (50 savol)</title>
+  <title>Test + O‘yin (Ikki tomonli savollar)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
       background: linear-gradient(to bottom, #0066cc, #3399ff);
       color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .player-area {
+      width: 45%;
+      text-align: center;
     }
     .track {
-      width: 90%;
+      width: 100%;
       height: 50px;
       background: #eee;
       margin: 20px auto;
@@ -25,79 +35,101 @@
       position: absolute;
       top: 5px;
     }
-    #car1 {
-      background: red;
-      left: 0;
+    #car1 { background: red; left: 0; }
+    #car2 { background: green; left: 0; }
+    .finish {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 10px;
+      height: 50px;
+      background: black;
     }
-    #car2 {
-      background: green;
-      left: 0;
-      top: 55px;
-    }
-    .answers button {
-      margin: 10px;
-      padding: 10px 20px;
+    button {
+      margin: 5px;
+      padding: 10px 15px;
       font-size: 16px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
     }
+    #winner {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <h1>🏁 Test + O‘yin</h1>
-  <p>To‘g‘ri javob mashinani oldinga, xato javob orqaga harakatlantiradi!</p>
+  <h1 style="text-align:center;">🏁 Ikki tomonli Test + O‘yin</h1>
+  <p style="text-align:center;">To‘g‘ri javob mashinani oldinga, xato javob orqaga harakatlantiradi!</p>
 
-  <!-- Yo‘llar -->
-  <div class="track">
-    <div id="car1" class="car"></div>
-  </div>
-  <div class="track">
-    <div id="car2" class="car"></div>
-  </div>
+  <div class="container">
+    <!-- 1-jamoa -->
+    <div class="player-area">
+      <h2 id="question1"></h2>
+      <div id="answers1"></div>
+      <div class="track">
+        <div id="car1" class="car"></div>
+        <div class="finish"></div>
+      </div>
+    </div>
 
-  <!-- Savol joyi -->
-  <h2 id="question"></h2>
-  <div class="answers" id="answers"></div>
+    <!-- 2-jamoa -->
+    <div class="player-area">
+      <h2 id="question2"></h2>
+      <div id="answers2"></div>
+      <div class="track">
+        <div id="car2" class="car"></div>
+        <div class="finish"></div>
+      </div>
+    </div>
+  </div>
 
   <h2 id="winner"></h2>
 
   <script>
-    // 50 ta savol massiv
-    const questions = [
+    // Savollar massivlari (siz 50 tadan qo‘shasiz)
+    const questions1 = [
       {q: "5 + 7 = ?", options:[12,13,14], correct:12},
-      {q: "9 × 3 = ?", options:[27,21,18], correct:27},
       {q: "15 - 6 = ?", options:[9,10,8], correct:9},
-      // ... shu tarzda 50 ta savol qo‘shasiz
+      {q: "12 ÷ 4 = ?", options:[2,3,4], correct:3},
+      // ... 50 ta savol
+    ];
+    const questions2 = [
+      {q: "9 × 3 = ?", options:[27,21,18], correct:27},
+      {q: "6 × 6 = ?", options:[36,30,42], correct:36},
+      {q: "20 ÷ 5 = ?", options:[2,4,5], correct:4},
+      // ... 50 ta savol
     ];
 
-    let currentIndex = 0;
+    let index1 = 0, index2 = 0;
 
-    function loadQuestion() {
-      if (currentIndex >= questions.length) {
-        document.getElementById("question").innerText = "Savollar tugadi!";
-        document.getElementById("answers").innerHTML = "";
-        return;
-      }
-      const q = questions[currentIndex];
-      document.getElementById("question").innerText = q.q;
-      document.getElementById("answers").innerHTML = "";
+    function loadQuestion(player) {
+      const qSet = player === 1 ? questions1 : questions2;
+      const qIndex = player === 1 ? index1 : index2;
+      if (qIndex >= qSet.length) return;
+
+      const q = qSet[qIndex];
+      document.getElementById("question"+player).innerText = q.q;
+      const answersDiv = document.getElementById("answers"+player);
+      answersDiv.innerHTML = "";
       q.options.forEach(opt => {
         const btn = document.createElement("button");
         btn.innerText = opt;
-        btn.onclick = () => checkAnswer(opt, q.correct);
-        document.getElementById("answers").appendChild(btn);
+        btn.onclick = () => checkAnswer(opt, q.correct, player);
+        answersDiv.appendChild(btn);
       });
     }
 
-    function checkAnswer(answer, correctAnswer) {
-      const car = currentIndex % 2 === 0 ? document.getElementById("car1") : document.getElementById("car2");
+    function checkAnswer(answer, correctAnswer, player) {
+      const car = document.getElementById("car"+player);
       let currentLeft = parseInt(car.style.left || 0);
 
       if (answer === correctAnswer) {
-        currentLeft += 100; // to‘g‘ri javob
+        currentLeft += 100;
       } else {
-        currentLeft -= 50;  // xato javob
+        currentLeft -= 50;
         if (currentLeft < 0) currentLeft = 0;
       }
 
@@ -105,16 +137,17 @@
 
       if (currentLeft >= 800) {
         document.getElementById("winner").innerText = 
-          (car.id === "car1" ? "🔴 1-o‘yinchi yutdi!" : "🟢 2-o‘yinchi yutdi!");
+          (player === 1 ? "🔴 1-jamoa yutdi!" : "🟢 2-jamoa yutdi!");
         return;
       }
 
-      currentIndex++;
-      loadQuestion();
+      if (player === 1) { index1++; loadQuestion(1); }
+      else { index2++; loadQuestion(2); }
     }
 
     // Boshlash
-    loadQuestion();
+    loadQuestion(1);
+    loadQuestion(2);
   </script>
 </body>
 </html>
