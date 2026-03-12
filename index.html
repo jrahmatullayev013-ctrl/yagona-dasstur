@@ -8,23 +8,18 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-      min-height: 100vh;
+      background: #f5f5f5;
     }
     .container {
-      max-width: 700px;
-      margin: 60px auto;
+      max-width: 600px;
+      margin: 50px auto;
       text-align: center;
     }
-    h1 {
-      color: #333;
-      margin-bottom: 30px;
-    }
     .menu-btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin: 15px;
+      margin: 20px auto;
       padding: 20px;
       background: #555;
       color: white;
@@ -32,7 +27,7 @@
       border-radius: 8px;
       font-size: 22px;
       font-weight: bold;
-      width: 250px;
+      width: 280px;
       transition: 0.3s;
     }
     .menu-btn:hover {
@@ -41,37 +36,22 @@
     .menu-btn span {
       margin-left: 10px;
     }
-    .top-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .bottom-buttons {
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Yagona Dastur — Bosh menyu</h1>
-
-    <!-- Tepada Mock Test va Dastur haqida -->
-    <div class="top-buttons">
-      <a href="mocktest.html" class="menu-btn">
-        📘 <span>Mock Test</span>
-      </a>
-      <a href="haqida.html" class="menu-btn">
-        ℹ️ <span>Dastur haqida</span>
-      </a>
-    </div>
+    <!-- Tepada katta tugmalar -->
+    <a href="mocktest.html" class="menu-btn">
+      📘 <span>Mock Test</span>
+    </a>
+    <a href="haqida.html" class="menu-btn">
+      ℹ️ <span>Dastur haqida</span>
+    </a>
 
     <!-- Pastda Registratsiya -->
-    <div class="bottom-buttons">
-      <a href="registratsiya.html" class="menu-btn">
-        📝 <span>Registratsiya</span>
-      </a>
-    </div>
+    <a href="registratsiya.html" class="menu-btn">
+      📝 <span>Registratsiya</span>
+    </a>
   </div>
 </body>
 </html>
