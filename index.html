@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <title>Test + O‘yin</title>
+  <title>Test + O‘yin (50 savol)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -34,7 +34,7 @@
       left: 0;
       top: 55px;
     }
-    button {
+    .answers button {
       margin: 10px;
       padding: 10px 20px;
       font-size: 16px;
@@ -56,38 +56,65 @@
     <div id="car2" class="car"></div>
   </div>
 
-  <!-- Savollar -->
-  <h2>5 + 7 = ? (1-o‘yinchi)</h2>
-  <button onclick="checkAnswer(12,'car1',12)">12</button>
-  <button onclick="checkAnswer(13,'car1',12)">13</button>
-  <button onclick="checkAnswer(14,'car1',12)">14</button>
-
-  <h2>9 × 3 = ? (2-o‘yinchi)</h2>
-  <button onclick="checkAnswer(27,'car2',27)">27</button>
-  <button onclick="checkAnswer(21,'car2',27)">21</button>
-  <button onclick="checkAnswer(18,'car2',27)">18</button>
+  <!-- Savol joyi -->
+  <h2 id="question"></h2>
+  <div class="answers" id="answers"></div>
 
   <h2 id="winner"></h2>
 
   <script>
-    function checkAnswer(answer, carId, correctAnswer) {
-      const car = document.getElementById(carId);
+    // 50 ta savol massiv
+    const questions = [
+      {q: "5 + 7 = ?", options:[12,13,14], correct:12},
+      {q: "9 × 3 = ?", options:[27,21,18], correct:27},
+      {q: "15 - 6 = ?", options:[9,10,8], correct:9},
+      // ... shu tarzda 50 ta savol qo‘shasiz
+    ];
+
+    let currentIndex = 0;
+
+    function loadQuestion() {
+      if (currentIndex >= questions.length) {
+        document.getElementById("question").innerText = "Savollar tugadi!";
+        document.getElementById("answers").innerHTML = "";
+        return;
+      }
+      const q = questions[currentIndex];
+      document.getElementById("question").innerText = q.q;
+      document.getElementById("answers").innerHTML = "";
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.innerText = opt;
+        btn.onclick = () => checkAnswer(opt, q.correct);
+        document.getElementById("answers").appendChild(btn);
+      });
+    }
+
+    function checkAnswer(answer, correctAnswer) {
+      const car = currentIndex % 2 === 0 ? document.getElementById("car1") : document.getElementById("car2");
       let currentLeft = parseInt(car.style.left || 0);
 
       if (answer === correctAnswer) {
-        currentLeft += 100; // to‘g‘ri javobda oldinga
+        currentLeft += 100; // to‘g‘ri javob
       } else {
-        currentLeft -= 50;  // xato javobda orqaga
-        if (currentLeft < 0) currentLeft = 0; // orqaga cheksiz ketmasin
+        currentLeft -= 50;  // xato javob
+        if (currentLeft < 0) currentLeft = 0;
       }
 
       car.style.left = currentLeft + "px";
 
       if (currentLeft >= 800) {
         document.getElementById("winner").innerText = 
-          (carId === "car1" ? "🔴 1-o‘yinchi yutdi!" : "🟢 2-o‘yinchi yutdi!");
+          (car.id === "car1" ? "🔴 1-o‘yinchi yutdi!" : "🟢 2-o‘yinchi yutdi!");
+        return;
       }
+
+      currentIndex++;
+      loadQuestion();
     }
+
+    // Boshlash
+    loadQuestion();
   </script>
 </body>
 </html>
