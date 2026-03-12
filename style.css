@@ -1,76 +1,41 @@
-/* Umumiy sahifa dizayni */
+/* Umumiy sahifa foni */
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to bottom, #0066cc, #3399ff); /* ko‘k gradient fon */
+  font-family: Arial, sans-serif;
+  color: #333;
   margin: 0;
-  padding: 20px;
-  background: url("background.jpg") no-repeat center center fixed;
-  background-size: cover;
+  padding: 0;
 }
 
-/* Sarlavha */
-h1 {
-  text-align: center;
+/* Menyu tugmalari */
+#submitBtn {
+  display: inline-block;
+  background-color: #004080; /* chuqur ko‘k tugma */
   color: #fff;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  padding: 12px 20px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
-/* Savol kartochkalari */
+#submitBtn:hover {
+  background-color: #0066cc; /* hover effekti */
+}
+
+/* Oq bloklar */
 .question {
-  background: rgba(255,255,255,0.9);
+  background-color: #ffffff; /* oq fon */
+  border-radius: 10px;       /* yumaloq burchaklar */
   padding: 20px;
   margin: 20px auto;
-  border-radius: 12px;
-  max-width: 700px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-.question:hover {
-  transform: scale(1.02);
-}
-.question h3 {
-  margin-bottom: 15px;
-  color: #2c3e50;
-  font-size: 20px;
-}
-
-/* Variant tugmalari */
-.question label {
-  display: block;
-  margin: 8px 0;
-  padding: 10px;
-  background: #e9ecef;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.question label:hover {
-  background: #d6d8db;
-}
-
-/* Natija tugmasi */
-#submitBtn {
-  display: block;
-  margin: 30px auto;
-  padding: 12px 25px;
-  font-size: 18px;
-  background: #2c3e50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-#submitBtn:hover {
-  background: #1a252f;
-}
-
-/* Natija matni */
-#result {
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* soyali effekt */
   text-align: center;
-  font-size: 22px;
-  margin-top: 25px;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+h1 {
+  text-align: center;
+  color: #fff; /* sarlavha oq rangda */
+  padding-top: 20px;
 }
