@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <title>Yagona Dastur — Test</title>
+  <title>Yagona Dastur — Menyu</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,139 +18,45 @@
       display: flex;
       align-items: center;
     }
-    .topbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin-right: auto;
+    .topbar h1 {
+      margin: 0;
+      font-size: 20px;
     }
-    .container {
-      max-width: 900px;
+    .menu {
+      max-width: 800px;
       margin: 40px auto;
       background: #fff;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    label {
-      font-weight: bold;
-      margin-right: 10px;
-    }
-    select, button {
-      padding: 10px 14px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-right: 10px;
-    }
-    button {
+    .menu a {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
       background: #4CAF50;
       color: white;
-      cursor: pointer;
+      text-decoration: none;
+      border-radius: 6px;
+      text-align: center;
       transition: 0.3s;
     }
-    button:hover {
+    .menu a:hover {
       background: #45a049;
-    }
-    .question {
-      margin: 15px 0;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      background: #fafafa;
-    }
-    #result {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #333;
     }
   </style>
 </head>
 <body>
-  <!-- Tepada menyuga qaytish -->
+  <!-- Tepada sarlavha -->
   <div class="topbar">
-    <a href="index.html">← Menyuga qaytish</a>
+    <h1>Yagona Dastur — Menyu</h1>
   </div>
 
-  <div class="container">
-    <!-- Sinf tanlash va Boshlash tugmasi -->
-    <div class="controls">
-      <div>
-        <label for="classSelect">Sinfni tanlang:</label>
-        <select id="classSelect">
-          <option value="5">5-sinf</option>
-          <option value="6">6-sinf</option>
-          <option value="7">7-sinf</option>
-          <option value="8">8-sinf</option>
-          <option value="9">9-sinf</option>
-          <option value="10">10-sinf</option>
-          <option value="11">11-sinf</option>
-        </select>
-      </div>
-      <button onclick="startTest()">Boshlash</button>
-    </div>
-
-    <!-- Savollar bloki -->
-    <div id="questions"></div>
-    <div id="result"></div>
+  <!-- Menyu tugmalari -->
+  <div class="menu">
+    <a href="mocktest.html">📘 Mock Test</a>
+    <a href="fanlar.html">📚 Fanlar</a>
+    <a href="haqida.html">ℹ️ Dastur haqida</a>
   </div>
-
-  <script>
-    const testQuestions = {
-      "5": [
-        {q:"25 × 4 = ?", opts:["50","75","100"], ans:2, score:1},
-        {q:"81 ning kvadrat ildizi?", opts:["9","8","7"], ans:0, score:1}
-        // ... yana 13 ta savol qo‘shiladi
-      ]
-      // boshqa sinflar uchun ham 15 ta savol qo‘shiladi
-    };
-
-    function startTest() {
-      const selectedClass = document.getElementById("classSelect").value;
-      const questionsDiv = document.getElementById("questions");
-      const resultDiv = document.getElementById("result");
-      questionsDiv.innerHTML = ""; 
-      resultDiv.innerHTML = "";
-
-      const questions = testQuestions[selectedClass];
-      if (!questions) {
-        questionsDiv.innerHTML = "<p>Bu sinf uchun savollar hali qo‘shilmagan.</p>";
-        return;
-      }
-
-      questions.forEach((item, index) => {
-        const qDiv = document.createElement("div");
-        qDiv.className = "question";
-        qDiv.innerHTML = `<p>${index+1}-savol: ${item.q}</p>` +
-          item.opts.map((opt,i)=>`<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`).join("");
-        questionsDiv.appendChild(qDiv);
-      });
-
-      const finishBtn = document.createElement("button");
-      finishBtn.textContent = "Tugatish";
-      finishBtn.onclick = () => calculateScore(questions);
-      questionsDiv.appendChild(finishBtn);
-    }
-
-    function calculateScore(questions) {
-      let score = 0;
-      questions.forEach((item, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected && parseInt(selected.value) === item.ans) {
-          score += item.score;
-        }
-      });
-      document.getElementById("result").innerHTML = 
-        `Sizning umumiy balingiz: ${score} / ${questions.reduce((sum,q)=>sum+q.score,0)}`;
-    }
-  </script>
 </body>
 </html>
