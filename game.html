@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>2 kishilik o‘yin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #0066cc, #3399ff);
+      color: #fff;
+    }
+    .track {
+      width: 90%;
+      height: 50px;
+      background: #eee;
+      margin: 20px auto;
+      border-radius: 10px;
+      position: relative;
+    }
+    .player {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+    }
+    #player1 {
+      background: red;
+      left: 0;
+    }
+    #player2 {
+      background: green;
+      left: 0;
+      top: 55px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏁 Ikki kishilik o‘yin</h1>
+  <p>Kim birinchi marraga yetsa — yutadi!</p>
+
+  <div class="track">
+    <div id="player1" class="player"></div>
+  </div>
+  <div class="track">
+    <div id="player2" class="player"></div>
+  </div>
+
+  <button onclick="movePlayer('player1')">1-o‘yinchi harakat</button>
+  <button onclick="movePlayer('player2')">2-o‘yinchi harakat</button>
+
+  <h2 id="winner"></h2>
+
+  <script>
+    function movePlayer(playerId) {
+      const player = document.getElementById(playerId);
+      let currentLeft = parseInt(player.style.left || 0);
+      currentLeft += 50; // har bosishda 50px oldinga
+      player.style.left = currentLeft + "px";
+
+      // finish chizig‘i
+      if (currentLeft >= 800) {
+        document.getElementById("winner").innerText = 
+          (playerId === "player1" ? "🔴 1-o‘yinchi yutdi!" : "🟢 2-o‘yinchi yutdi!");
+      }
+    }
+  </script>
+</body>
+</html>
