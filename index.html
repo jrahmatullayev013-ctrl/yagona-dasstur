@@ -3,74 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Yagona Dastur — Bosh menyu</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    /* Tepada navigatsiya paneli */
-    .navbar {
-      background: #2c3e50;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-    }
-    .navbar h1 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      transition: 0.3s;
-    }
-    .nav-links a:hover {
-      color: #f1c40f;
-    }
-    /* Hero banner */
-    .hero {
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-      height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
-    .hero h2 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-    .hero p {
-      font-size: 20px;
-      max-width: 600px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Tepada logotip va menyu -->
-  <div class="navbar">
-    <h1>📘 Yagona Dastur</h1>
-    <div class="nav-links">
-      <a href="mocktest.html">Mock Test</a>
-      <a href="haqida.html">Dastur haqida</a>
-      <a href="registratsiya.html">Registratsiya</a>
-    </div>
+  <!-- Menyu qismi -->
+  <h1>Bosh menyu</h1>
+  <div class="question">
+    <a href="mocktest.html" id="submitBtn">Mock Test</a>
+    <a href="haqida.html" id="submitBtn">Dastur haqida</a>
+    <a href="register.html" id="submitBtn">Ro‘yxatdan o‘tish</a>
   </div>
 
-  <!-- Pastda hero banner -->
-  <div class="hero">
-    <h2>Bosh menyuga xush kelibsiz!</h2>
-    <p>Bu yerda siz testlarni ishlashingiz, dastur haqida ma’lumot olishingiz va ro‘yxatdan o‘tishingiz mumkin.</p>
+  <!-- Kok fon tagidagi oq blok -->
+  <div class="question">
+    <h3>🏫 Direktor</h3>
+    <p>M. Eshanova</p>
+  </div>
+
+  <div class="question">
+    <h3>👨‍🎓 O‘quvchilar</h3>
+    <p>625</p>
+  </div>
+
+  <div class="question">
+    <h3>👩‍🏫 O‘qituvchilar</h3>
+    <p>52</p>
   </div>
 </body>
 </html>
